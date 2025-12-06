@@ -1,138 +1,122 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Random Love Message</title>
-  <style>
-    body {
-      height: 100vh;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #ffeef2;
-      font-family: "Segoe UI", sans-serif;
-    }
-    .container {
-      text-align: center;
-      position: relative; /* Đã thêm: Quan trọng cho hiệu ứng trái tim */
-      overflow: hidden; /* Đã thêm: Giúp trái tim không tràn ra ngoài khi bay lên */
-      padding: 50px; /* Thêm padding để có không gian xung quanh nút */
-    }
-    button {
-      padding: 12px 28px;
-      font-size: 18px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      background: #ff7da6;
-      color: white;
-      transition: 0.2s;
-      z-index: 10; /* Đảm bảo nút nằm trên trái tim */
-    }
-    button:hover {
-      background: #ff527f;
-    }
-    #message {
-      margin-top: 24px;
-      font-size: 22px;
-      max-width: 300px;
-      line-height: 1.4;
-      color: #b20047;
-      z-index: 10; /* Đảm bảo tin nhắn nằm trên trái tim */
-    }
-
-    /* START: CSS CHO HIỆU ỨNG TRÁI TIM */
-    .heart {
-        position: absolute;
-        color: red;
-        font-size: 24px;
-        opacity: 1;
-        pointer-events: none; /* Không chặn click */
-        animation: burst 1s ease-out forwards;
-        z-index: 5; /* Nằm dưới nút và tin nhắn */
-    }
-
-    @keyframes burst {
-        0% {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-            filter: blur(0px);
-        }
-        100% {
-            transform: translateY(-200px) scale(1.5);
-            opacity: 0;
-            filter: blur(2px);
-        }
-    }
-    /* END: CSS CHO HIỆU ỨNG TRÁI TIM */
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Love Message</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffeef2;
+      font-family: "Segoe UI", sans-serif;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+      z-index: 10;
+    }
+    button {
+      padding: 12px 28px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      background: #ff7da6;
+      color: white;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #ff527f;
+    }
+    #message {
+      margin-top: 24px;
+      font-size: 22px;
+      max-width: 320px;
+      line-height: 1.4;
+      color: #b20047;
+      min-height: 70px;
+    }
+    .heart {
+      position: fixed;
+      color: red;
+      font-size: 22px;
+      animation: floatUp 1.5s ease-out forwards;
+      pointer-events: none;
+    }
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-120px) scale(1.8);
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <button onclick="showMessage()">Nhấn vào đây nè</button>
-    <div id="message"></div>
-  </div>
+  <div class="container">
+    <button onclick="showMessage()">Nhấn vào đây nè</button>
+    <div id="message"></div>
+  </div>
 
-  <script>
-    const messages = [
-      "Bông giữ sức khỏe nhé.",
-      "Muốn nghe giọng Bông quoaaa.",
-      "Nhớ Bông thế nhở.",
-      "Bông đáng iu thậttt.",
-      "Bông xinh toaaaa.",
-      "Thích giọng Bông lắm í.",
-      "Bông nhớ uống nước đầy đủ nhe, hoa phải có nước mới tươi.",
-      "Bông mau khỏi bệnh nhé.",
-      "Ăn uống đầy đủ vào nhé.",
-      "Hứa sẽ ăn uống đầy đủ với cả giữ sức khỏe nên bông yên tâm nheee.",
-      "I will give more flowers for you.",
-      "I really want to be close to you.",
-      "Cảm ơn Bông ngày nào cũng quan tâm đến em nhé.",
-      "Bông xuất hiện xong thấy có thêm một điều rất đặc biệt trong cuộc sống luôn.",
-      "Everything I told you is the truth, believe me.",
-      "Thích đi du lịch nhưng đi đâu cũng phải cẩn thận nhé.",
-      "Bông nói giọng gì cũng hay cả.",
-      "I take care of you, and only you.",
-      "Thích gặp Bông vãi.",
-      "I want to call you whenever I can.",
-      "Muon nghe Bông chuc ngu ngon moi ngay.",
-      "Bông dễ thương khum ai bằng.",
-      "Bông ráng ăn vào nhé.",
-      "Bông như nào cũng trông xinh cả.",
-      "Muon gap Bông ruiii.",
-      "Em muốn biết về Bông nhiều thật nhiều.",
-      "Ngày nào nói chuyện với Bông cũng vui cả.",
-      "Nhiều cái em hơi vụng ấy, Bông đừng giận em nhé.",
-      "Em chỉ thấy bông hoa xinh nhất là Bông thoai.",
-      "Mấy lúc Bông mắng trông vẫn rất đáng yêu nhé.",
-      "Em không hay chủ động, nhưng giờ em chỉ muốn chủ động với Bông thoai.",
-      "Bông cười nhiều lên nhé.",
-      "Bông xinh như mụt bông hoa í."
-    ];
+  <script>
+    const messages = [
+      "Bông giữ sức khỏe nhé.",
+      "Muốn nghe giọng Bông quoaaa.",
+      "Nhớ Bông thế nhở.",
+      "Bông đáng iu thậttt.",
+      "Bông xinh toaaaa.",
+      "Thích giọng Bông lắm í.",
+      "Bông nhớ uống nước đầy đủ nhe, hoa phải có nước mới tươi.",
+      "Bông mau khỏi bệnh nhé.",
+      "Ăn uống đầy đủ vào nhé.",
+      "Hứa sẽ ăn uống đầy đủ với cả giữ sức khỏe nên bông yên tâm nheee.",
+      "I will give more flowers for you.",
+      "I really want to be close to you.",
+      "Cảm ơn Bông ngày nào cũng quan tâm đến em nhé.",
+      "Bông xuất hiện xong thấy có thêm một điều rất đặc biệt trong cuộc sống luôn.",
+      "Everything I told you is the truth, believe me.",
+      "Thích đi du lịch nhưng đi đâu cũng phải cẩn thận nhé.",
+      "Bông nói giọng gì cũng hay cả.",
+      "I take care of you, and only you.",
+      "Thích gặp Bông vãi.",
+      "I want to call you whenever I can.",
+      "Muon nghe Bông chuc ngu ngon moi ngay.",
+      "Bông dễ thương khum ai bằng.",
+      "Bông ráng ăn vào nhé.",
+      "Bông như nào cũng trông xinh cả.",
+      "Muon gap Bông ruiii.",
+      "Em muốn biết về Bông nhiều thật nhiều.",
+      "Ngày nào nói chuyện với Bông cũng vui cả.",
+      "Nhiều cái em hơi vụng ấy, Bông đừng giận em nhé.",
+      "Em chỉ thấy bông hoa xinh nhất là Bông thoai.",
+      "Mấy lúc Bông mắng trông vẫn rất đáng yêu nhé.",
+      "Em không hay chủ động, nhưng giờ em chỉ muốn chủ động với Bông thoai.",
+      "Bông cười nhiều lên nhé.",
+      "Bông xinh như mụt bông hoa í."
+    ];
 
-    function showMessage() {
-      const randomIndex = Math.floor(Math.random() * messages.length);
-      document.getElementById("message").textContent = messages[randomIndex];
-    }
+    function showMessage() {
+      const randomIndex = Math.floor(Math.random() * messages.length);
+      document.getElementById("message").textContent = messages[randomIndex];
+      createHeart();
+    }
 
-    /* START: JS CHO HIỆU ỨNG TRÁI TIM */
-    document.querySelector('.container').addEventListener('click', function(e) {
-        // 1. Tính toán vị trí click trong phạm vi .container
-        const x = e.clientX - e.currentTarget.offsetLeft;
-        const y = e.clientY - e.currentTarget.offsetTop;
-
-        // 2. Tạo phần tử trái tim
-        const heart = document.createElement('span');
-        heart.classList.add('heart');
-        heart.innerHTML = '❤️'; 
-
-        // 3. Đặt vị trí ban đầu
-        heart.style.left = `${x}px`;
-        heart.style.top = `${y}px`;
-
-        // 4. Thêm trái tim vào container
-        this.appendChild(heart);
-
-        // 5. Dọn dẹp sau khi animation kết thúc (
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "❤";
+      heart.style.left = Math.random() * 90 + "vw";
+      heart.style.top = "70vh";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 1500);
+    }
+  </script>
+</body>
+</html>
