@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Love Message</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffeef2;
+      font-family: "Segoe UI", sans-serif;
+    }
+    .container {
+      text-align: center;
+    }
+    button {
+      padding: 12px 28px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      background: #ff7da6;
+      color: white;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #ff527f;
+    }
+    #message {
+      margin-top: 24px;
+      font-size: 22px;
+      max-width: 300px;
+      line-height: 1.4;
+      color: #b20047;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button onclick="showMessage()">Nhấn vào đây nè</button>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const messages = [
+      "Bông giữ sức khỏe nhé.",
+      "Muốn nghe giọng Bông quoaaa.",
+      "Nhớ Bông thế nhở.",
+      "Bông đáng iu thậttt.",
+      "Bông xinh toaaaa.",
+      "Thích giọng Bông lắm í.",
+      "Bông nhớ uống nước đầy đủ nhe, hoa phải có nước mới tươi.",
+      "Muon gap Bông ruiii.",
+      "Bông cười nhiều lên nhé.",
+      "Bông xinh như mụt bông hoa í."
+    ];
+
+    function showMessage() {
+      const randomIndex = Math.floor(Math.random() * messages.length);
+      document.getElementById("message").textContent = messages[randomIndex];
+    }
+  </script>
+</body>
+</html>
