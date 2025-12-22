@@ -2,90 +2,16 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Random Love Message</title>
-  <style>
-    body {
-      height: 100vh;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #ffeef2;
-      font-family: "Segoe UI", sans-serif;
-    }
-    .container {
-      text-align: center;
-    }
-    button {
-      padding: 12px 28px;
-      font-size: 18px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      background: #ff7da6;
-      color: white;
-      transition: 0.2s;
-    }
-    button:hover {
-      background: #ff527f;
-    }
-    #message {
-      margin-top: 24px;
-      font-size: 22px;
-      max-width: 300px;
-      line-height: 1.4;
-      color: #b20047;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Bức Thư Lời Nhắn Animation</title>
+
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="container">
-    <button onclick="showMessage()">Nhấn vào đây nè</button>
+  <div class="letter-container">
     <div id="message"></div>
   </div>
 
-  <script>
-    const messages = [
-      "Bông giữ sức khỏe nhé.",
-      "Muốn nghe giọng Bông quoaaa.",
-      "Nhớ Bông thế nhở.",
-      "Bông đáng iu thậttt.",
-      "Bông xinh toaaaa.",
-      "Thích giọng Bông lắm í.",
-      "Bông nhớ uống nước đầy đủ nhe, hoa phải có nước mới tươi.",
-      "Bông mau khỏi bệnh nhé.",
-      "Ăn uống đầy đủ vào nhé.",
-      "Hứa sẽ ăn uống đầy đủ với cả giữ sức khỏe nên bông yên tâm nheee.",
-      "I will give more flowers for you.",
-      "I really want to be close to you.",
-      "Cảm ơn Bông ngày nào cũng quan tâm đến em nhé.",
-      "Bông xuất hiện xong thấy có thêm một điều rất đặc biệt trong cuộc sống luôn.",
-      "Everything I told you is the truth, believe me.",
-      "Thích đi du lịch nhưng đi đâu cũng phải cẩn thận nhé.",
-      "Bông nói giọng gì cũng hay cả.",
-      "I take care of you, and only you.",
-      "Thích gặp Bông vãi.",
-      "I want to call you whenever I can.",
-      "Muon nghe Bông chuc ngu ngon moi ngay.",
-      "Bông dễ thương khum ai bằng.",
-      "Bông ráng ăn vào nhé.",
-      "Bông như nào cũng trông xinh cả.",
-      "Muon gap Bông ruiii.",
-      "Em muốn biết về Bông nhiều thật nhiều.",
-      "Ngày nào nói chuyện với Bông cũng vui cả.",
-      "Nhiều cái em hơi vụng ấy, Bông đừng giận em nhé.",
-      "Em chỉ thấy bông hoa xinh nhất là Bông thoai.",
-      "Mấy lúc Bông mắng trông vẫn rất đáng yêu nhé.",
-      "Em không hay chủ động, nhưng giờ em chỉ muốn chủ động với Bông thoai.",
-      "Bông cười nhiều lên nhé.",
-      "Bông xinh như mụt bông hoa í."
-    ];
-
-    function showMessage() {
-      const randomIndex = Math.floor(Math.random() * messages.length);
-      document.getElementById("message").textContent = messages[randomIndex];
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
